@@ -41,7 +41,7 @@ sh ~/llm-kit/kit/mac/fetch.sh selftest ~/llm-kit/selftest && rm -rf ~/llm-kit/se
 |---|---|---|---|---|
 | `engines` | llama.cpp b12110(= v0.9.0)macOS arm64 包;oMLX 0.7.3 DMG(macOS 26 版) | 0.84 GiB | `~/llm-kit/engines` | 推理引擎 |
 | `cfg1-qwen3.8-27b-q5_k_s-gguf` | Qwen3.8-27B Q5_K_S GGUF(bartowski) | 18.22 GiB | `~/models/cfg1-qwen3.8-27b-q5_k_s-gguf` | 配置 1 最聪明可跑,llama.cpp |
-| `cfg2-qwen3.8-27b-oq4e-mtp-mlx` | Qwen3.8-27B oQ4e-mtp MLX(Jundot,2026-10-29 重新量化版) | 16.34 GiB | `~/.omlx/models/Qwen3.8-27B-oQ4e-mtp` | 配置 2 日常主力,oMLX |
+| `cfg2-qwen3.8-27b-oq4e-mtp-mlx` | Qwen3.8-27B oQ4e-mtp MLX(Jundot,2026-11-19 重新量化版,见第 5 步说明) | 16.34 GiB | `~/.omlx/models/Qwen3.8-27B-oQ4e-mtp` | 配置 2 日常主力,oMLX |
 | `cfg3-qwen3.6-35b-a3b-4bit-mlx` | Qwen3.6-35B-A3B 4-bit MLX(mlx-community) | 19.03 GiB | `~/.omlx/models/Qwen3.6-35B-A3B-4bit` | 配置 3 快速辅助,oMLX |
 | `alt-qwen3.8-27b-q4_k_m-gguf` | Qwen3.8-27B Q4_K_M GGUF(bartowski) | 16.24 GiB | `~/models/alt-qwen3.8-27b-q4_k_m-gguf` | 配置 1 的退路、128K 长文档、配置 2 的 llama.cpp 备选 |
 | `alt-qwen3.8-27b-ud-q6_k-gguf` | Qwen3.8-27B UD-Q6_K GGUF(unsloth) | 20.47 GiB | `~/models/alt-qwen3.8-27b-ud-q6_k-gguf` | 上限文件第一步,长思考测试没过才用 |
@@ -106,6 +106,8 @@ hdiutil detach "$MNT"
 ```
 
 第一次打开 oMLX 会进欢迎向导:模型目录保持默认的 `~/.omlx/models`;向导会强制设置 API key;"下载第一个模型"这一步要连 Hugging Face,能跳过就跳过,模型用上面的 `fetch.sh` 放进去。模型放好后重启 oMLX 服务,它会自动发现子目录里的模型。App 提示自动更新时先别升:报告里的设置是按 0.7.3 写的。
+
+配置 2 的权重是作者 2026-11-19 用 oMLX 0.8.0 重新量化的版本,报告实测的 10-29 版已经从 Hugging Face 删除。两版格式相同(affine、group 64、4/5/6/8 bit 混合,`config.json` 结构一致),区别只在量化取整;按 oMLX 源码看 0.7.3 能加载,但还没在 Mac 上实测过。如果 0.7.3 加载配置 2 报错,改用 [oMLX 0.8.0](https://github.com/jundot/omlx/releases/tag/v0.8.0) 的 `oMLX-0.8.0-macos26-27.dmg`(报告没测过 0.8.0)。
 
 ### 6. 启动
 
