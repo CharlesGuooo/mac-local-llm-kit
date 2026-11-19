@@ -1,0 +1,9 @@
+# mac-local-llm-kit MANIFEST v1
+# tag: engines
+# source: https://github.com/ggml-org/llama.cpp/releases/tag/b12110, https://github.com/jundot/omlx/releases/tag/v0.7.3
+# asset<TAB>name<TAB>bytes<TAB>sha256 = one release asset to download
+# file<TAB>name<TAB>bytes<TAB>sha256<TAB>parts = one final file; parts>0 means cat name.part001..partNNN
+asset	llama-b12110-bin-macos-arm64.tar.gz	16650691	4f5b8de12e0b9516658ca6a5764c6ffb3d7c659c3dd538556b1413c7b4050662
+asset	oMLX-0.7.3-macos26-27.dmg	881239063	2acfde41aeac0b022dbca803ca109437f3ccaf0c33f3415881526b985bee86f2
+file	llama-b12110-bin-macos-arm64.tar.gz	16650691	4f5b8de12e0b9516658ca6a5764c6ffb3d7c659c3dd538556b1413c7b4050662	0
+file	oMLX-0.7.3-macos26-27.dmg	881239063	2acfde41aeac0b022dbca803ca109437f3ccaf0c33f3415881526b985bee86f2	0
