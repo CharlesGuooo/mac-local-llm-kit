@@ -6,12 +6,6 @@
 - `mac/fetch.sh` 负责下载、逐卷校验、合卷,再用 Hugging Face 官方公布的 SHA-256 校验整个文件。
 - Mac 只需要能访问 `github.com`、它跳转到的 `release-assets.githubusercontent.com`,以及取脚本用的 `raw.githubusercontent.com`。不需要 Hugging Face、Homebrew 或 Python。
 
-> 上传还在进行。release 在全部分卷传完并校验通过之前是草稿,外面看不到。只有已发布的 release 能下载,没发布的 `fetch.sh` 会直接报 `release not published yet`。查已发布的:
->
-> ```sh
-> curl -s https://api.github.com/repos/CharlesGuooo/mac-local-llm-kit/releases | grep '"tag_name"'
-> ```
-
 ## 给 Mac 上的 agent:按顺序做
 
 如果这是公司电脑,装引擎和下载权重之前先按公司规定拿到批准。
